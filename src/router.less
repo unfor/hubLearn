@@ -11,22 +11,32 @@ html, body{
     background-color: #cccccc;
     // display: flex;
     // flex-direction: row;
+    .topBar{
+        height: 50px;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        div{
+            flex: 1;
+        }
+    }
+
     .leftBar{
         position: absolute;
-        top: 0;
+        top: 50px;
         left: 0;
         width: 20%;
-        height: 100%;
+        height: e('calc(100% - 50px)');
         // flex: 5;
         background-color: darkslategray;
     }
 
     .rightContent{
         position: absolute;
-        top: 0;
+        top: 50px;
         left: 20%;
         width: 80%;
-        height: 100%;
+        height: e('calc(100% - 50px)');
         // flex: 5;
         background-color: dimgray;
         
