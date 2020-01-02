@@ -5,11 +5,20 @@ const BlogIndex = React.lazy(() => import ("./blog"));
 import ResumeIndex from "./resume"
 import UserIndex from "./user"
 import './router.less';
+import html2canvas from 'html2canvas';
+import Canvas2Image from './canvas2image.js';
 // import BlogIndex from './blog';
 class AppRouter extends React.Component {
     
     hello(){
         console.log("hello")
+    }
+
+    capture(container, options = {}){
+        return html2canvas(container, options).then((canvas) => {
+            const image1 = Canvas2Image.convertToPNG(canvas, canvas.width, canvas.height);
+            return image1;
+        })
     }
 
     render() {
@@ -25,7 +34,7 @@ class AppRouter extends React.Component {
 
         return (
             <BrowserRouter>
-                <div className="mainPage">
+                <div id="mainPage" className="mainPage">
                     <div className="leftBar">
                         <ul>
                             <li><Link to="/home">home</Link></li>
@@ -47,7 +56,7 @@ class AppRouter extends React.Component {
                         </Switch>
                     </div>
                     <div className="topBar">
-                        <div>{"图标"}</div>
+                        <div onClick={this.capture}>{"图标"}</div>
                         <div>{"图标"}</div>
                         <div>{"图标"}</div>
                         <div>{"图标"}</div>
